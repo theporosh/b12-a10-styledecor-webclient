@@ -9,7 +9,7 @@ body {
   font-style: normal;
 }
 
-
+/* Navbar */
 /* Animated underline for NavLink */
 .nav-link {
   position: relative;
@@ -86,4 +86,19 @@ body {
 .mobile-item:hover {
   background: #f5f5f5;
   color: #1E595D;
+}
+
+
+/* Footer */
+.footer-title {
+  @apply text-xl font-semibold text-[#C8A870] tracking-wide;
+}
+
+.footer-link {
+  @apply text-gray-200 hover:text-[#C8A870] transition;
+}
+
+.footer-icon {
+  @apply w-10 h-10 flex items-center justify-center rounded-full bg-[#C8A870] 
+    text-[#1E595D] text-lg transition hover:bg-white hover:text-[#1E595D];
 }

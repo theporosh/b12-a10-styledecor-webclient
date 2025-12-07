@@ -8,6 +8,11 @@ import {
     FaTachometerAlt,
 } from "react-icons/fa";
 import Logo from "../../../components/Logo/Logo";
+import { LiaHomeSolid } from "react-icons/lia";
+import { GrServices } from "react-icons/gr";
+import { MdRoundaboutLeft } from "react-icons/md";
+import { SlSupport } from "react-icons/sl";
+
 
 
 const NavBar = () => {
@@ -22,26 +27,26 @@ const NavBar = () => {
     const links = (
         <>
             <li>
-                <NavLink to="/" className="nav-link">
-                    Home
+                <NavLink to="/" className="nav-link flex items-center gap-2">
+                  <LiaHomeSolid />  Home
                 </NavLink>
             </li>
 
             <li>
-                <NavLink to="/services" className="nav-link">
-                    Services
+                <NavLink to="/services" className="nav-link flex items-center gap-2">
+                   <GrServices/> Services
                 </NavLink>
             </li>
 
             <li>
-                <NavLink to="/about" className="nav-link">
-                    About Us
+                <NavLink to="/about" className="nav-link flex items-center gap-2">
+                   <MdRoundaboutLeft/> About Us
                 </NavLink>
             </li>
 
             <li>
-                <NavLink to="/contact" className="nav-link">
-                    Contact
+                <NavLink to="/contact" className="nav-link flex items-center gap-2">
+                   <SlSupport /> Contact
                 </NavLink>
             </li>
 
@@ -81,16 +86,16 @@ const NavBar = () => {
                     {isProfileOpen && (
                         <div className="absolute right-0 mt-3 w-48 bg-white shadow-xl rounded-xl border border-gray-100 py-2 animate-fade">
                             <NavLink to="/profile" className="dropdown-item">
-                                My Profile
+                              👤 My Profile
                             </NavLink>
                             <NavLink to="/appointments" className="dropdown-item">
-                                Appointments
+                               📅 Appointments
                             </NavLink>
 
                             <div className="border-t my-1" />
 
                             <button className="dropdown-item text-red-600 hover:bg-red-50">
-                                Sign Out
+                               🚪 Sign Out
                             </button>
                         </div>
                     )}
@@ -115,14 +120,14 @@ const NavBar = () => {
                         {isLoggedIn ? (
                             <>
                                 <NavLink to="/profile" className="mobile-item">
-                                    My Profile
+                                  👤 My Profile
                                 </NavLink>
                                 <NavLink to="/appointments" className="mobile-item">
-                                    Appointments
+                                   📅 Appointments
                                 </NavLink>
 
                                 <button className="mobile-item text-red-600">
-                                    Sign Out
+                                   🚪 Sign Out
                                 </button>
                             </>
                         ) : (
