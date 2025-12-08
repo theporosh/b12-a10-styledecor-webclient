@@ -4,6 +4,8 @@ import TopDecorators from '../TopDecorators/TopDecorators';
 import Services from '../DecorationServices/Services';
 import WhyStyleDecor from '../WhyStyleDecor/WhyStyleDecor';
 import CustomerReviews from '../CustomerReviews/CustomerReviews';
+import ServiceCoverageMap from '../../ServiceCoverageMap/ServiceCoverageMap';
+
 
 
 
@@ -15,6 +17,7 @@ const Home = () => {
             <TopDecorators></TopDecorators>
             <Services></Services>
             <CustomerReviews></CustomerReviews>
+            <ServiceCoverageMap></ServiceCoverageMap>
         </div>
     );
 };
