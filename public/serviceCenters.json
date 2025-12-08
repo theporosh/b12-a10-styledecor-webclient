@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "StyleDecor Dhaka Center",
+    "city": "Dhaka",
+    "coords": [23.8103, 90.4125]
+  },
+  {
+    "id": 2,
+    "name": "StyleDecor Gulshan Studio",
+    "city": "Gulshan",
+    "coords": [23.7925, 90.4078]
+  },
+  {
+    "id": 3,
+    "name": "StyleDecor Uttara Point",
+    "city": "Uttara",
+    "coords": [23.8767, 90.3794]
+  },
+  {
+    "id": 4,
+    "name": "StyleDecor Chattogram Center",
+    "city": "Chattogram",
+    "coords": [22.3569, 91.7832]
+  },
+  {
+    "id": 5,
+    "name": "StyleDecor Sylhet Hub",
+    "city": "Sylhet",
+    "coords": [24.8949, 91.8687]
+  },
+  {
+    "id": 6,
+    "name": "StyleDecor Khulna Service Point",
+    "city": "Khulna",
+    "coords": [22.8456, 89.5403]
+  },
+  {
+    "id": 7,
+    "name": "StyleDecor Rajshahi Center",
+    "city": "Rajshahi",
+    "coords": [24.3745, 88.6042]
+  },
+  {
+    "id": 8,
+    "name": "StyleDecor Barisal Point",
+    "city": "Barisal",
+    "coords": [22.7010, 90.3535]
+  },
+  {
+    "id": 9,
+    "name": "StyleDecor Mymensingh Hub",
+    "city": "Mymensingh",
+    "coords": [24.7471, 90.4203]
+  },
+  {
+    "id": 10,
+    "name": "StyleDecor Comilla Branch",
+    "city": "Comilla",
+    "coords": [23.4607, 91.1809]
+  },
+  {
+    "id": 11,
+    "name": "StyleDecor Rangpur Point",
+    "city": "Rangpur",
+    "coords": [25.7439, 89.2752]
+  },
+  {
+    "id": 12,
+    "name": "StyleDecor Cox's Bazar Spot",
+    "city": "Cox's Bazar",
+    "coords": [21.4272, 92.0058]
+  }
+]

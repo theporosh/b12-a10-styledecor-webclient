@@ -6,6 +6,7 @@ import {
     FaTimes,
     FaAngleDown,
     FaTachometerAlt,
+    FaMapMarkerAlt,
 } from "react-icons/fa";
 import Logo from "../../../components/Logo/Logo";
 import { LiaHomeSolid } from "react-icons/lia";
@@ -47,6 +48,11 @@ const NavBar = () => {
             <li>
                 <NavLink to="/contact" className="nav-link flex items-center gap-2">
                    <SlSupport /> Contact
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to="/coverage" className="nav-link flex items-center gap-2">
+                   <FaMapMarkerAlt /> Coverage
                 </NavLink>
             </li>
 

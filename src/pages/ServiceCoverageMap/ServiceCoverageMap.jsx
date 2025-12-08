@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, Circle } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Fix default marker issue
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconRetinaUrl:
@@ -32,6 +32,48 @@ const serviceAreas = [
         name: "Sylhet City",
         coords: [24.8949, 91.8687],
         radius: 7000,
+    },
+    {
+        id: 4,
+        name: "Khulna City",
+        coords: [22.8456, 89.5403],
+        radius: 5000,
+    },
+    {
+        id: 5,
+        name: "Rajshahi City",
+        coords: [24.3745, 88.6042],
+        radius: 6500,
+    },
+    {
+        id: 6,
+        name: "Barisal City",
+        coords: [22.7010, 90.3535],
+        radius: 4500,
+    },
+    {
+        id: 7,
+        name: "Mymensingh City",
+        coords: [24.7471, 90.4203],
+        radius: 5400,
+    },
+    {
+        id: 8,
+        name: "Comilla City",
+        coords: [23.4607, 91.1809],
+        radius: 4100,
+    },
+    {
+        id: 9,
+        name: "Rangpur City",
+        coords: [25.7439, 89.2752],
+        radius: 8100,
+    },
+    {
+        id: 10,
+        name: "Cox's Bazar",
+        coords: [21.4272, 92.0058],
+        radius: 3000,
     },
 ];
 
