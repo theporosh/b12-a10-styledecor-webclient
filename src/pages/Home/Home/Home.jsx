@@ -3,6 +3,9 @@ import HeroSection from '../Hero/HeroSection';
 import TopDecorators from '../TopDecorators/TopDecorators';
 import Services from '../DecorationServices/Services';
 import WhyStyleDecor from '../WhyStyleDecor/WhyStyleDecor';
+import CustomerReviews from '../CustomerReviews/CustomerReviews';
+
+
 
 const Home = () => {
     return (
@@ -11,6 +14,7 @@ const Home = () => {
             <WhyStyleDecor></WhyStyleDecor>
             <TopDecorators></TopDecorators>
             <Services></Services>
+            <CustomerReviews></CustomerReviews>
         </div>
     );
 };
