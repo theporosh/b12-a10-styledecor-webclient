@@ -15,7 +15,7 @@ const Services = () => {
         <section className="py-20 bg-gray-50" id="services">
             <div className="w-11/12 mx-auto px-4">
                 <h2 className="text-4xl font-bold text-center text-[#1E595D] mb-10">
-                    Our Decoration Services
+                    Our Decoration <span className="text-[#C8A870]">Services</span>
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
