@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 const decorators = [
     {
@@ -99,9 +100,11 @@ const TopDecorators = () => {
 
                             {/* View Profile Button */}
                             <div className="text-center mt-6">
-                                <button className="px-6 py-2 bg-[#1E595D] text-white rounded-lg shadow hover:bg-[#15494d] transition">
+                                <Link 
+                                to={`/decorators/${decorator.id}`}
+                                className="px-6 py-2 bg-[#1E595D] text-white rounded-lg shadow hover:bg-[#15494d] transition">
                                     View Profile
-                                </button>
+                                </Link>
                             </div>
 
                         </motion.div>
