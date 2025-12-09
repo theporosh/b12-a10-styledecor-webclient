@@ -80,6 +80,18 @@ const Login = () => {
                         {errors.password && (
                             <p className="text-red-600 text-sm mt-1">{errors.password.message}</p>
                         )}
+
+
+                        {/* Forgot Password */}
+                        <div className="text-right mt-2">
+                            <button
+                                type="button"
+                                className="text-sm text-[#1E595D] hover:underline font-semibold"
+                                onClick={() => console.log("Forgot Password Clicked")}
+                            >
+                                Forgot Password?
+                            </button>
+                        </div>
                     </div>
 
                     {/* Login Button */}
@@ -98,8 +110,8 @@ const Login = () => {
                         Create Account
                     </Link>
                 </p>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
