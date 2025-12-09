@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import useAuth from "../../../hooks/useAuth";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Register = () => {
+    // email: tom@jom.com, password: 123456As@
+    const { registerUser, signInGoogle, updateUserProfile } = useAuth();
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log('in the register page', location);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -13,12 +22,74 @@ const Register = () => {
         formState: { errors }
     } = useForm();
 
+    // const handleRegistration = (data) => {
+
+    //     console.log("Register Data:", data);
+    // };
+
+
     const handleRegistration = (data) => {
-        console.log("Register Data:", data);
-    };
+
+        console.log('after register', data.photo[0]);
+        const profileImg = data.photo[0];
+
+        registerUser(data.email, data.password)
+            .then(result => {
+                console.log(result.user);
+
+                // 1. store the image in form data
+                const formData = new FormData()
+                formData.append('image', profileImg)
+
+                // 2. send the photo to store and get the url
+                const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host_key}`
+
+                axios.post(image_API_URL, formData)
+                    .then(res => {
+                        console.log('after image upload', res.data.data.url)
+
+                        // update user profile to firebase
+                        const userProfile = {
+                            displayName: data.name,
+                            photoURL: res.data.data.url
+                        }
+                        updateUserProfile(userProfile)
+                            .then(() => {
+                                console.log('user profile updated done')
+                                navigate(location.state || '/');
+                                toast.success("Registration successful!");
+                            })
+                            .catch(error => {
+                                console.log(error)
+                                const errorMessage = error.message;
+                                toast.success(errorMessage);
+                            })
+                    })
+
+
+            })
+            .catch(error => {
+                console.log(error)
+                const errorMessage = error.message;
+                toast.success(errorMessage);
+            })
+    }
+
+
 
     const handleGoogleRegister = () => {
         console.log("Google Register Clicked");
+        signInGoogle()
+            .then(result => {
+                console.log(result.user);
+                navigate(location.state || '/');
+                toast.success("Google registration successful!");
+            })
+            .catch(error => {
+                console.log(error)
+                const errorMessage = error.message;
+                toast.success(errorMessage);
+            })
     };
 
     return (
@@ -101,7 +172,7 @@ const Register = () => {
                         {/* Eye Toggle Button */}
                         <span
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-3 top-[39px] cursor-pointer text-gray-600"
+                            className="absolute right-3 top-10 cursor-pointer text-gray-600"
                         >
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </span>
@@ -152,7 +223,9 @@ const Register = () => {
                 {/* Bottom Links */}
                 <p className="text-center text-gray-600 mt-6">
                     Already have an account?{" "}
-                    <Link to="/login" className="text-[#C8A870] font-medium hover:underline">
+                    <Link 
+                    state={location.state}
+                    to="/login" className="text-[#C8A870] font-medium hover:underline">
                         Sign In
                     </Link>
                 </p>

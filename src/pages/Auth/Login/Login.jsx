@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import useAuth from '../../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+    // email: tom@jom.com, password: 123456As@
+
+     const { signInUser, signInGoogle } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log('in the login page', location);
+
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -13,13 +22,42 @@ const Login = () => {
         formState: { errors }
     } = useForm();
 
-    const handleLogin = (data) => {
-        console.log("Logged In:", data);
-    };
+    // const handleLogin = (data) => {
+    //     console.log("Logged In:", data);
+    // };
+
+     const handleLogin = (data) => {
+        console.log('form data', data);
+        signInUser(data.email, data.password)
+            .then(result => {
+                console.log(result.user)
+                navigate(location?.state || '/')
+                toast.success("Logged in successfully!");
+            })
+            .catch(error => {
+                console.log(error)
+                 const errorMessage = error.message;
+                 toast.success(errorMessage);
+            })
+    }
+
+
+
 
     const handleGoogleLogin = () => {
         console.log("Google Login Triggered");
         // Firebase Auth 
+        signInGoogle()
+            .then(result => {
+                console.log(result.user);
+                navigate(location.state || '/');
+                toast.success("Google login successful!");
+            })
+            .catch(error => {
+                console.log(error)
+                const errorMessage = error.message; 
+                toast.success(errorMessage);
+            })
     };
 
     return (
@@ -122,7 +160,9 @@ const Login = () => {
                 {/* Bottom Links */}
                 <p className="text-center text-gray-600 mt-6">
                     Don't have an account?{" "}
-                    <Link to="/register" className="text-[#C8A870] font-medium hover:underline">
+                    <Link 
+                    state={location.state}
+                    to="/register" className="text-[#C8A870] font-medium hover:underline">
                         Create Account
                     </Link>
                 </p>
