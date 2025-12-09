@@ -15,6 +15,7 @@ const Register = () => {
     console.log('in the register page', location);
 
     const [showPassword, setShowPassword] = useState(false);
+    const [previewImage, setPreviewImage] = useState(null);
 
     const {
         register,
@@ -30,6 +31,7 @@ const Register = () => {
 
     const handleRegistration = (data) => {
 
+        // console.log('after register', data);
         console.log('after register', data.photo[0]);
         const profileImg = data.photo[0];
 
@@ -139,21 +141,69 @@ const Register = () => {
                         )}
                     </div>
 
-                    {/* Photo URL */}
+                    {/* Profile Image Upload */}
                     <div>
-                        <label className="block font-medium mb-1">Photo URL</label>
-                        <input
-                            type="url"
-                            {...register("photo", { required: "Photo URL is required" })}
-                            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#1E595D]"
-                            placeholder="Enter photo URL"
-                        />
+                        <label className="block font-medium mb-2">Upload Profile Image</label>
+
+                        <div className="border-2 border-dashed border-[#1E595D] bg-gray-50 rounded-xl p-4 cursor-pointer hover:bg-gray-100 transition">
+
+                            <label className="flex flex-col items-center gap-2 cursor-pointer">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-12 w-12 text-[#1E595D]"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l-4-4m4 4l4-4"
+                                    />
+                                </svg>
+
+                                <p className="text-gray-700 font-medium">
+                                    Click to upload profile picture
+                                </p>
+
+                                <p className="text-gray-400 text-sm">
+                                    JPG, PNG under 2 MB
+                                </p>
+
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    {...register("photo", {
+                                        required: "Profile image is required",
+                                        onChange: (e) => {
+                                            const file = e.target.files[0];
+                                            if (file) {
+                                                setPreviewImage(URL.createObjectURL(file));
+                                            }
+                                        }
+                                    })}
+                                    className="hidden"
+                                />
+                            </label>
+                        </div>
+
+                        {/* Preview Box */}
+                        {previewImage && (
+                            <div className="mt-3 w-32 h-32 rounded-lg overflow-hidden border">
+                                <img
+                                    src={previewImage}
+                                    alt="Preview"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        )}
+
                         {errors.photo && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.photo.message}
-                            </p>
+                            <p className="text-red-500 text-sm mt-1">{errors.photo.message}</p>
                         )}
                     </div>
+
 
                     {/* Password */}
                     <div className="relative">
@@ -223,9 +273,9 @@ const Register = () => {
                 {/* Bottom Links */}
                 <p className="text-center text-gray-600 mt-6">
                     Already have an account?{" "}
-                    <Link 
-                    state={location.state}
-                    to="/login" className="text-[#C8A870] font-medium hover:underline">
+                    <Link
+                        state={location.state}
+                        to="/login" className="text-[#C8A870] font-medium hover:underline">
                         Sign In
                     </Link>
                 </p>
