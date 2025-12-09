@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from 'react-router';
 
 const Login = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
     const {
         register,
         handleSubmit,
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => {
+    const handleLogin = (data) => {
         console.log("Logged In:", data);
     };
 
@@ -34,7 +37,7 @@ const Login = () => {
                 {/* Google Login */}
                 <button
                     onClick={handleGoogleLogin}
-                    className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 hover:bg-gray-50 py-3 rounded-lg mt-6 shadow-sm transition"
+                    className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 hover:bg-gray-200 py-3 rounded-lg mt-6 shadow-sm transition"
                 >
                     <FaGoogle className="text-red-500 text-xl" />
                     <span className="text-gray-700 font-medium">Continue with Google</span>
@@ -48,7 +51,7 @@ const Login = () => {
                 </div>
 
                 {/* Login Form */}
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <form onSubmit={handleSubmit(handleLogin)} className="space-y-4">
 
                     {/* Email */}
                     <div>
@@ -67,18 +70,31 @@ const Login = () => {
                     </div>
 
                     {/* Password */}
-                    <div>
+                    <div className="relative">
                         <label className="block text-gray-700 font-medium mb-1">
                             Password
                         </label>
                         <input
-                            type="password"
-                            {...register("password", { required: "Password is required" })}
+                            type={showPassword ? "text" : "password"}
+                            {...register("password", { required: "Password is required", minLength: 6 })}
                             className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A870]"
                             placeholder="Enter your password"
                         />
+
+                        {/* Eye Toggle Button */}
+                        <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-[45px] cursor-pointer text-gray-600"
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+
                         {errors.password && (
-                            <p className="text-red-600 text-sm mt-1">{errors.password.message}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.password.type === "minLength"
+                                    ? "Password must be at least 6 characters"
+                                    : errors.password.message}
+                            </p>
                         )}
 
 

@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router";
 
 const Register = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
     const {
         register,
         handleSubmit,
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => {
+    const handleRegistration = (data) => {
         console.log("Register Data:", data);
     };
 
-    const handleGoogleLogin = () => {
+    const handleGoogleRegister = () => {
         console.log("Google Register Clicked");
     };
 
@@ -31,7 +34,7 @@ const Register = () => {
                 </p>
 
                 {/* Register Form */}
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                <form onSubmit={handleSubmit(handleRegistration)} className="space-y-5">
 
                     {/* Name */}
                     <div>
@@ -82,14 +85,27 @@ const Register = () => {
                     </div>
 
                     {/* Password */}
-                    <div>
+                    <div className="relative">
                         <label className="block font-medium mb-1">Password</label>
                         <input
-                            type="password"
-                            {...register("password", { required: "Password is required", minLength: 6 })}
+                            type={showPassword ? "text" : "password"}
+                            {...register("password", {
+                                required: "Password is required",
+                                minLength: 6,
+                                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/
+                            })}
                             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#1E595D]"
                             placeholder="Enter password"
                         />
+
+                        {/* Eye Toggle Button */}
+                        <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-[39px] cursor-pointer text-gray-600"
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+
                         {errors.password && (
                             <p className="text-red-500 text-sm mt-1">
                                 {errors.password.type === "minLength"
@@ -97,6 +113,15 @@ const Register = () => {
                                     : errors.password.message}
                             </p>
                         )}
+                        {errors.password && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.password.type === "pattern"
+                                    ? "One uppercase, one lowercase letter, one number, and one special character are required."
+                                    : errors.password.message}
+                            </p>
+                        )}
+
+
                     </div>
 
                     {/* Submit Button */}
@@ -117,11 +142,11 @@ const Register = () => {
 
                 {/* Google Login */}
                 <button
-                    onClick={handleGoogleLogin}
-                    className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg hover:bg-gray-100 transition"
+                    onClick={handleGoogleRegister}
+                    className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 py-2 rounded-lg hover:bg-gray-200 transition"
                 >
-                    <FaGoogle className="text-red-500" />
-                    <span>Continue with Google</span>
+                    <FaGoogle className="text-red-500 text-xl" />
+                    <span className="text-gray-700 font-medium">Continue with Google</span>
                 </button>
 
                 {/* Bottom Links */}
