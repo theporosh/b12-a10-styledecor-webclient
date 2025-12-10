@@ -1,0 +1,170 @@
+[
+    {
+        "title": "Premium Wedding Stage Decoration",
+        "price": 18000,
+        "duration": "6 hours",
+        "category": "Wedding",
+        "image": "https://i.ibb.co.com/GQ65YWJN/s1.avif",
+        "description": "Luxurious wedding stage setup with premium backdrop, floral work, and lighting."
+    },
+    {
+        "title": "Home Birthday Party Decoration",
+        "price": 6500,
+        "duration": "3 hours",
+        "category": "Birthday",
+        "image": "https://i.ibb.co.com/tw54hK3y/s2.webp",
+        "description": "Colorful balloon decoration, theme setup and lighting for birthdays at home."
+    },
+    {
+        "title": "Engagement Ceremony Floral Setup",
+        "price": 12000,
+        "duration": "4 hours",
+        "category": "Engagement",
+        "image": "https://i.ibb.co.com/RTf1Fmdv/s3.avif",
+        "description": "Elegant floral decoration designed specially for ring ceremony and engagement events."
+    },
+    {
+        "title": "Corporate Event Stage & Lighting",
+        "price": 25000,
+        "duration": "8 hours",
+        "category": "Corporate",
+        "image": "https://i.ibb.co.com/ds4RxvTn/s4.avif",
+        "description": "Professional stage, backdrop, and lighting setup for corporate programs."
+    },
+    {
+        "title": "Home Interior Lighting Package",
+        "price": 9000,
+        "duration": "5 hours",
+        "category": "Interior",
+        "image": "https://i.ibb.co.com/QF4xppvv/s5.avif",
+        "description": "Stylish LED ambient lighting setup for bedrooms and living rooms."
+    },
+    {
+        "title": "Mehendi Ceremony Decoration",
+        "price": 14000,
+        "duration": "6 hours",
+        "category": "Wedding",
+        "image": "https://i.ibb.co.com/N2T83xbx/s6.avif",
+        "description": "Traditional vibrant yellow-green décor with seating and floral arrangements."
+    },
+    {
+        "title": "Outdoor Garden Wedding Setup",
+        "price": 32000,
+        "duration": "8 hours",
+        "category": "Wedding",
+        "image": "https://i.ibb.co.com/xSJwy3kM/s7.avif",
+        "description": "Romantic outdoor décor with arch, walkway flowers, and fairy lights."
+    },
+    {
+        "title": "Baby Shower Decoration Package",
+        "price": 8000,
+        "duration": "4 hours",
+        "category": "Baby Shower",
+        "image": "https://i.ibb.co.com/vxxSyLJg/s8.avif",
+        "description": "Cute pastel theme decoration with balloons, backdrop, and photo booth."
+    },
+    {
+        "title": "Car Decoration for Wedding",
+        "price": 3500,
+        "duration": "1 hour",
+        "category": "Wedding",
+        "image": "https://i.ibb.co.com/VY7B6Kmh/s9.avif",
+        "description": "Fresh flower decoration for bridal car, matching the wedding theme."
+    },
+    {
+        "title": "Photography Backdrop Setup",
+        "price": 7000,
+        "duration": "2 hours",
+        "category": "Photo Shoot",
+        "image": "https://i.ibb.co.com/zVvknwKb/s10.avif",
+        "description": "Premium backdrop + props ideal for event photo sessions."
+    },
+    {
+        "title": "Home Anniversary Decoration",
+        "price": 6000,
+        "duration": "3 hours",
+        "category": "Anniversary",
+        "image": "https://i.ibb.co.com/7dgcz4K7/s11.webp",
+        "description": "Romantic room decoration with balloons, candles, and LED lights."
+    },
+    {
+        "title": "Ceremony Entrance Gate Decoration",
+        "price": 15000,
+        "duration": "6 hours",
+        "category": "Ceremony",
+        "image": "https://i.ibb.co.com/MktZ1b9p/s12.webp",
+        "description": "Grand floral entrance gate setup for wedding and ceremonies."
+    },
+    {
+        "title": "Luxury Haldi Ceremony Decoration",
+        "price": 16000,
+        "duration": "5 hours",
+        "category": "Wedding",
+        "image": "https://i.ibb.co.com/Z6DtSvWX/alls13.avif",
+        "description": "Bright and traditional haldi decor with marigold flowers, seating arrangements and theme props."
+    },
+    {
+        "title": "Kids Theme Birthday Decoration",
+        "price": 9000,
+        "duration": "4 hours",
+        "category": "Birthday",
+        "image": "https://i.ibb.co.com/yc3GGL4T/alls14.avif",
+        "description": "Premium cartoon-themed birthday decoration including balloon arch, backdrop, and character standees."
+    },
+    {
+        "title": "Corporate Seminar Backdrop & Sound System",
+        "price": 28000,
+        "duration": "8 hours",
+        "category": "Corporate",
+        "image": "https://i.ibb.co.com/zWgPyRdj/alls15.webp",
+        "description": "Professional stage backdrop, sound system, LED light setup suitable for conferences and seminars."
+    },
+    {
+        "title": "Traditional Bengali Gaye Holud Stage",
+        "price": 20000,
+        "duration": "6 hours",
+        "category": "Wedding",
+        "image": "https://i.ibb.co.com/v4sBJ7Ck/alls16.avif",
+        "description": "Vibrant yellow-themed holud stage with floral garlands, matka props and photo area."
+    },
+    {
+        "title": "Romantic Rooftop Candlelight Decoration",
+        "price": 7500,
+        "duration": "2 hours",
+        "category": "Anniversary",
+        "image": "https://i.ibb.co.com/H87jtct/alls17.avif",
+        "description": "Beautiful rooftop setup with candles, rose petals, fairy lights and couple seating arrangement."
+    },
+    {
+        "title": "Premium Housewarming Decoration Package",
+        "price": 13000,
+        "duration": "5 hours",
+        "category": "Ceremony",
+        "image": "https://i.ibb.co.com/ZpRgnxW7/alls18.avif",
+        "description": "Elegant griha pravesh decor including floral toran, rangoli and puja setup."
+    },
+    {
+        "title": "Indoor Baby Naming Ceremony Setup",
+        "price": 11000,
+        "duration": "4 hours",
+        "category": "Baby Shower",
+        "image": "https://i.ibb.co.com/XZyzb8CD/alls19.avif",
+        "description": "Soothing pastel-themed naming ceremony decor with balloon backdrop, stage props and welcome board."
+    },
+    {
+        "title": "LED Party Lighting & DJ Setup",
+        "price": 14000,
+        "duration": "5 hours",
+        "category": "Party",
+        "image": "https://i.ibb.co.com/0R8RWcF5/alls20.avif",
+        "description": "Vibrant DJ lighting, sound system and stage lighting perfect for birthday parties or receptions."
+    },
+    {
+        "title": "Floral Mandap Decoration",
+        "price": 26000,
+        "duration": "7 hours",
+        "category": "Wedding",
+        "image": "https://i.ibb.co.com/mnhCdTT/alls21.avif",
+        "description": "Traditional Hindu mandap decorated with fresh flowers, drapes and ceremonial elements."
+    }
+]

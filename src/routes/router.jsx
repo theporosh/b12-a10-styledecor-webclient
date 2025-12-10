@@ -6,6 +6,8 @@ import Coverage from "../pages/ServiceCoverageMap/Coverage";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
+import AllServices from "../pages/AllServices/AllServices";
+
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +21,10 @@ export const router = createBrowserRouter([
         {
             path: "/decorators/:id",
             element: <DecoratorDetails></DecoratorDetails>,
+        },
+        {
+            path: "/allServices",
+            Component: AllServices,
         },
         {
             path: "/coverage",

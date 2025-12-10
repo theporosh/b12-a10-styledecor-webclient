@@ -46,7 +46,7 @@ const NavBar = () => {
             </li>
 
             <li>
-                <NavLink to="/services" className="nav-link flex items-center gap-2">
+                <NavLink to="/allServices" className="nav-link flex items-center gap-2">
                     <GrServices /> Services
                 </NavLink>
             </li>

@@ -33,7 +33,7 @@ const HeroSection = () => {
                         transition={{ delay: 0.3, duration: 0.6 }}
                     >
                         <Link
-                            to="/book"
+                            to="/allServices"
                             className="inline-block mt-7 px-8 py-4 text-lg font-medium bg-[#1E595D] text-white rounded-xl shadow-md hover:shadow-xl hover:bg-[#18494c] transition-all duration-300"
                         >
                             Book Decoration Service
