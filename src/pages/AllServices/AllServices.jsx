@@ -1,9 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { FaSearch } from "react-icons/fa";
-import Loading from "../Shared/Loading/Loading";
+import { useLocation, useNavigate } from "react-router";
+
 
 const AllServices = () => {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleBookNow = (id) => {
+        navigate(`/services/${id}`);
+    };
+
     const [services, setServices] = useState([]);
     const [categories, setCategories] = useState(["All"]);
     const [search, setSearch] = useState("");
@@ -215,9 +224,14 @@ const AllServices = () => {
 
                                     <div className="flex items-center justify-between mt-4">
                                         <span className="text-xl font-bold text-[#1E595D]">৳ {s.price}</span>
-                                        <button className="px-4 py-2 bg-[#C8A870] text-[#1E595D] rounded-lg font-semibold hover:opacity-90">
+
+                                        <button 
+                                        state={location.state}
+                                        onClick={() => handleBookNow(s._id)}
+                                        className="px-4 py-2 bg-[#C8A870] text-[#1E595D] rounded-lg font-semibold hover:opacity-90">
                                             Book Now
                                         </button>
+
                                     </div>
                                 </div>
                             </div>
