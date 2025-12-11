@@ -1,10 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { FaSearch } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const AllServices = () => {
+
+     const axiosSecure = useAxiosSecure();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -27,7 +30,7 @@ const AllServices = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    // debounce for search
+    // For search
     const searchRef = useRef();
     useEffect(() => {
         clearTimeout(searchRef.current);
@@ -41,8 +44,8 @@ const AllServices = () => {
 
     // fetch categories on mount
     useEffect(() => {
-        axios
-            .get("http://localhost:3000/categories")
+        axiosSecure
+            .get("/categories")
             .then((res) => {
                 if (res.data && Array.isArray(res.data)) {
                     setCategories(["All", ...res.data]);
@@ -56,7 +59,7 @@ const AllServices = () => {
     // fetch on filter/sort/page change
     useEffect(() => {
         fetchPackages(page);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+       
     }, [category, minPrice, maxPrice, sort, page]);
 
     const fetchPackages = async (pageToLoad = 1) => {
@@ -74,7 +77,7 @@ const AllServices = () => {
             };
 
             // const res = await axios.get("/public/allServices.json", { params });
-            const res = await axios.get("http://localhost:3000/services", { params });
+            const res = await axiosSecure.get("/services", { params });
             if (res.data) {
                 setServices(res.data.data || []);
                 setTotalPages(res.data.totalPages || 1);
@@ -108,7 +111,7 @@ const AllServices = () => {
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <h2 className="text-3xl font-bold text-[#1E595D]">
-                        Our <span className="text-[#C8A870]">Services</span>
+                        All <span className="text-[#C8A870]">Services</span>
                     </h2>
 
                     {/* Search + Filters */}

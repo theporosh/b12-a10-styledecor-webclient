@@ -1,11 +1,15 @@
 import { useLocation, useNavigate, useParams } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const ServiceDetails = () => {
+
+    const axiosSecure = useAxiosSecure();
+
     const { id } = useParams();
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -23,7 +27,7 @@ const ServiceDetails = () => {
     useEffect(() => {
         const fetchService = async () => {
             try {
-                const res = await axios.get(`http://localhost:3000/services/${id}`);
+                const res = await axiosSecure.get(`/services/${id}`);
                 setService(res.data);
             } catch (err) {
                 console.error(err);
@@ -63,7 +67,7 @@ const ServiceDetails = () => {
         };
 
         try {
-            const res = await axios.post("http://localhost:3000/bookings", bookingData);
+            const res = await axiosSecure.post("/bookings", bookingData);
             if (res.data.insertedId) {
                 toast.success("Booking Successful!");
                 setIsOpen(false);
@@ -103,7 +107,9 @@ const ServiceDetails = () => {
 
                         <form onSubmit={handleBookingSubmit} className="space-y-4">
                             <input type="text" value={user.displayName} readOnly className="input input-bordered w-full" />
+
                             <input type="email" value={user.email} readOnly className="input input-bordered w-full" />
+
                             <input type="text" value={service.title} readOnly className="input input-bordered w-full" />
 
                             <input type="date" required value={bookingDate} onChange={e => setBookingDate(e.target.value)} className="input input-bordered w-full" />

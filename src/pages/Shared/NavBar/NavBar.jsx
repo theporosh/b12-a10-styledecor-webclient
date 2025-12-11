@@ -83,7 +83,7 @@ const NavBar = () => {
         <nav className="bg-white shadow-lg sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
             <div className="w-11/12 mx-auto px-4 flex justify-between items-center h-20">
 
-                  <div className="div">{user && user.email}</div>
+                  {/* <div className="div">{user && user.email}</div> */}
 
                 {/* Logo */}
                 <Logo></Logo>

@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Register = () => {
     // email: tom@jom.com, password: 123456As@
@@ -12,7 +13,9 @@ const Register = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
-    console.log('in the register page', location);
+    // console.log('in the register page', location);
+
+    const axiosSecure = useAxiosSecure();
 
     const [showPassword, setShowPassword] = useState(false);
     const [previewImage, setPreviewImage] = useState(null);
@@ -32,11 +35,11 @@ const Register = () => {
     const handleRegistration = (data) => {
 
         // console.log('after register', data);
-        console.log('after register', data.photo[0]);
+        // console.log('after register', data.photo[0]);
         const profileImg = data.photo[0];
 
         registerUser(data.email, data.password)
-            .then(result => {
+            .then((result) => {
                 console.log(result.user);
 
                 // 1. store the image in form data
@@ -48,12 +51,27 @@ const Register = () => {
 
                 axios.post(image_API_URL, formData)
                     .then(res => {
-                        console.log('after image upload', res.data.data.url)
+                        // console.log('after image upload', res.data.data.url)
+                        const photoURL = res.data.data.url;
+
+                        // create user in the database
+                        const userInfo = {
+                            email: data.email,
+                            displayName: data.name,
+                            photoURL: photoURL
+                        }
+
+                        axiosSecure.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user created in the database');
+                                }
+                            })
 
                         // update user profile to firebase
                         const userProfile = {
                             displayName: data.name,
-                            photoURL: res.data.data.url
+                            photoURL: photoURL
                         }
                         updateUserProfile(userProfile)
                             .then(() => {
@@ -80,12 +98,25 @@ const Register = () => {
 
 
     const handleGoogleRegister = () => {
-        console.log("Google Register Clicked");
+        // console.log("Google Register Clicked");
         signInGoogle()
             .then(result => {
                 console.log(result.user);
-                navigate(location.state || '/');
-                toast.success("Google registration successful!");
+
+
+                // create user in the database
+                const userInfo = {
+                    email: result.user.email,
+                    displayName: result.user.displayName,
+                    photoURL: result.user.photoURL
+                }
+                axiosSecure.post('/users', userInfo)
+                    .then(res => {
+                        console.log('user google data has been stored', res.data);
+                        navigate(location.state || '/');
+                        toast.success("Google registration successful!");
+                    })
+
             })
             .catch(error => {
                 console.log(error)

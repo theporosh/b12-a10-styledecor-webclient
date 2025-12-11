@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import { Link } from "react-router";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 
 const Services = () => {
-    const [services, setServices] = useState([]);
+
+    const axiosSecure = useAxiosSecure();
+
+     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3000/packages")
+        axiosSecure.get("/packages")
         // axios.get("/public/demo.json")
             .then(res => setServices(res.data))
             .catch(err => console.log(err));
@@ -15,7 +21,7 @@ const Services = () => {
         <section className="py-20 bg-gray-50" id="services">
             <div className="w-11/12 mx-auto px-4">
                 <h2 className="text-4xl font-bold text-center text-[#1E595D] mb-10">
-                    Our Decoration <span className="text-[#C8A870]">Services</span>
+                    Our Decoration <span className="text-[#C8A870]">Packages</span>
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -46,9 +52,11 @@ const Services = () => {
                                         ৳ {service.price}
                                     </span>
 
-                                    <button className="px-4 py-2 bg-[#1E595D] text-white rounded-lg hover:bg-[#17494c] transition">
+                                    <Link 
+                                    to="/allServices"
+                                    className="px-4 py-2 bg-[#1E595D] text-white rounded-lg hover:bg-[#17494c] transition">
                                         Book Now
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

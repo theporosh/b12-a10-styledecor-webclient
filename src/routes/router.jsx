@@ -8,6 +8,16 @@ import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
 import AllServices from "../pages/AllServices/AllServices";
 import ServiceDetails from "../pages/AllServices/ServiceDetails";
+import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../layouts/DashboardLayout";
+import UserProfile from "../pages/Dashboard/user/UserProfile";
+import MyBookings from "../pages/Dashboard/user/MyBookings";
+import PaymentHistory from "../pages/Dashboard/user/PaymentHistory";
+import ManageServices from "../pages/Dashboard/admin/ManageServices";
+import ManageDecorators from "../pages/Dashboard/admin/ManageDecorators";
+import RevenueAnalytics from "../pages/Dashboard/admin/RevenueAnalytics";
+import AssignedProjects from "../pages/Dashboard/decorator/AssignedProjects";
+import ProjectStatus from "../pages/Dashboard/decorator/ProjectStatus";
 
 
 
@@ -44,7 +54,7 @@ export const router = createBrowserRouter([
     Component: AuthLayout,
     children: [
       {
-        path: '/login',
+        path: 'login',
         Component: Login,
       },
       {
@@ -52,5 +62,52 @@ export const router = createBrowserRouter([
         Component: Register,
       }
     ]
+  },
+
+  {
+    path: '/dashboard',
+    element: <PrivateRoute>
+      <DashboardLayout></DashboardLayout>
+    </PrivateRoute>,
+    children: [
+      {
+        path: 'profile',
+        element: <UserProfile></UserProfile>,
+      },
+      {
+        path: 'bookings',
+        element: <MyBookings></MyBookings>,
+      },
+      {
+        path: 'payments',
+        element: <PaymentHistory></PaymentHistory>,
+      },
+
+      // Admin
+      {
+        path: 'services',
+        element: <ManageServices></ManageServices>,
+      },
+      {
+        path: 'decorators',
+        element: <ManageDecorators></ManageDecorators>,
+      },
+      {
+        path: 'analytics',
+        element: <RevenueAnalytics></RevenueAnalytics>,
+      },
+
+      // Decorator
+      {
+        path: 'projects',
+        element: <AssignedProjects></AssignedProjects>,
+      },
+      {
+        path: 'status',
+        element: <ProjectStatus></ProjectStatus>,
+      },
+    ]
   }
+
+
 ]);

@@ -4,16 +4,17 @@ import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const Login = () => {
     // email: tom@jom.com, password: 123456As@
 
-     const { signInUser, signInGoogle } = useAuth();
+    const { signInUser, signInGoogle } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     console.log('in the login page', location);
 
-
+    const axiosSecure = useAxiosSecure();
     const [showPassword, setShowPassword] = useState(false);
 
     const {
@@ -26,7 +27,7 @@ const Login = () => {
     //     console.log("Logged In:", data);
     // };
 
-     const handleLogin = (data) => {
+    const handleLogin = (data) => {
         console.log('form data', data);
         signInUser(data.email, data.password)
             .then(result => {
@@ -36,8 +37,8 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error)
-                 const errorMessage = error.message;
-                 toast.success(errorMessage);
+                const errorMessage = error.message;
+                toast.success(errorMessage);
             })
     }
 
@@ -45,17 +46,31 @@ const Login = () => {
 
 
     const handleGoogleLogin = () => {
-        console.log("Google Login Triggered");
+        // console.log("Google Login Triggered");
         // Firebase Auth 
         signInGoogle()
             .then(result => {
                 console.log(result.user);
-                navigate(location.state || '/');
-                toast.success("Google login successful!");
+
+
+                // create user in the database
+                const userInfo = {
+                    email: result.user.email,
+                    displayName: result.user.displayName,
+                    photoURL: result.user.photoURL
+                }
+                axiosSecure.post('/users', userInfo)
+                    .then(res => {
+                        console.log('user google data has been stored', res.data);
+                        navigate(location.state || '/');
+                        toast.success("Google login successful!");
+                    })
+
+
             })
             .catch(error => {
                 console.log(error)
-                const errorMessage = error.message; 
+                const errorMessage = error.message;
                 toast.success(errorMessage);
             })
     };
@@ -160,9 +175,9 @@ const Login = () => {
                 {/* Bottom Links */}
                 <p className="text-center text-gray-600 mt-6">
                     Don't have an account?{" "}
-                    <Link 
-                    state={location.state}
-                    to="/register" className="text-[#C8A870] font-medium hover:underline">
+                    <Link
+                        state={location.state}
+                        to="/register" className="text-[#C8A870] font-medium hover:underline">
                         Create Account
                     </Link>
                 </p>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.init';
+import axios from 'axios';
 
 
 const googleProvider = new GoogleAuthProvider();
@@ -10,6 +11,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true);
+    const [role, setRole] = useState(null);
 
     const registerUser = (email, password) => {
         setLoading(true);
@@ -37,8 +39,22 @@ const AuthProvider = ({ children }) => {
 
     // observe user state
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unSubscribe = onAuthStateChanged(auth, async(currentUser) => {
             setUser(currentUser);
+
+
+
+            if (currentUser?.email) {
+                const { data } = await axios.get(
+                    `http://localhost:3000/users/${currentUser.email}`
+                );
+                setRole(data.role);
+            } else {
+                setRole(null);
+            }
+
+
+
             setLoading(false);
         })
         return () => {
@@ -48,6 +64,7 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         user,
+        role,
         loading,
         logOut,
         registerUser,
