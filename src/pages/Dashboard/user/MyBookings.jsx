@@ -4,12 +4,22 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaCalendarAlt, FaMapMarkerAlt, FaMoneyBillWave, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+// import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
 
 
 
 const MyBookings = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+
+    // const { data: booking = [], refetch } = useQuery({
+    //     queryKey: ['bookings', user?.email],
+    //     queryFn: async () => {
+    //         const res = await axiosSecure.get(`/bookings?email=${user.email}`);
+    //         return res.data;
+    //     }
+    // })
 
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -32,34 +42,29 @@ const MyBookings = () => {
     }, [user]);
 
     const handleCancelBooking = async (id) => {
-        // const confirmCancel = confirm("Are you sure you want to cancel this booking?");
-        Swal.fire({
+
+        const result = await Swal.fire({
             title: "Are you sure you want to cancel this booking?",
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-            }
+            confirmButtonText: "Yes, cancel it!",
         });
 
-        if (!confirmCancel) return;
+        if (!result.isConfirmed) return;
 
         try {
             const res = await axiosSecure.delete(`/bookings/${id}`);
+
             if (res.data.deletedCount > 0) {
-                toast.success("Booking cancelled");
+                //refresh the data in the ui
+                // refetch();
+                Swal.fire("Cancelled!", "Your booking has been cancelled.", "success");
                 setBookings(bookings.filter((item) => item._id !== id));
             }
-        } catch (err) {
+        } catch (error) {
             toast.error("Failed to cancel booking");
         }
     };
@@ -73,6 +78,18 @@ const MyBookings = () => {
                 No Bookings Found
             </div>
         );
+
+    const handlePayment = async(booking) => {
+        const paymentInfo = {
+            price: booking.price,
+            serviceId: booking._id,
+            customerEmail: booking.customerEmail,
+            serviceTitle: booking.serviceTitle
+        }
+        const res = await axiosSecure.post('/create-checkout-session' , paymentInfo);
+        console.log(res.data)
+        window.location.href = res.data.url;
+    }
 
     return (
         <div className="p-6">
@@ -107,7 +124,7 @@ const MyBookings = () => {
                         <span
                             className={`mt-3 px-3 py-1 rounded-full text-sm w-fit
                                 ${booking.status === "Pending" && "bg-yellow-200 text-yellow-700"}
-                                ${booking.status === "Approved" && "bg-green-200 text-green-700"}
+                                ${booking.status === "Paid" && "bg-green-200 text-green-700"}
                                 ${booking.status === "Cancelled" && "bg-red-200 text-red-700"}
                             `}
                         >
@@ -125,9 +142,14 @@ const MyBookings = () => {
 
                             {/* Payment button (future) */}
                             {booking.status === "Pending" && (
-                                <button className="bg-[#1E595D] text-white py-2 px-4 rounded-lg hover:bg-[#174648]">
+                                //  <Link to={`/dashboard/payment/${booking._id}`}>
+
+                                <button
+                                    onClick={() => handlePayment(booking)}
+                                    className="bg-[#1E595D] text-white py-2 px-4 rounded-lg hover:bg-[#174648]">
                                     Pay Now
                                 </button>
+                                // </Link>
                             )}
                         </div>
                     </div>

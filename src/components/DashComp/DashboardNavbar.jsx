@@ -47,7 +47,7 @@ const DashboardNavbar = ({ onToggleSidebar }) => {
                         className="flex items-center gap-3"
                     >
                         <img
-                            src={user?.photoURL || "https://i.ibb.co/2FhV9S3/user.png"}
+                            src={user?.photoURL || "https://i.ibb.co.com/6RdXpDJM/defuser.png"}
                             alt="avatar"
                             className="w-10 h-10 rounded-full border"
                         />

@@ -85,6 +85,7 @@ const DashboardSidebar = () => {  //{ role }
                                 {isOpen && "Manage Decorators"}
                             </Link>
                         </li>
+
                         <li>
                             <Link className="flex items-center gap-3" to="/dashboard/analytics">
                                 <FaChartArea />

@@ -18,6 +18,9 @@ import ManageDecorators from "../pages/Dashboard/admin/ManageDecorators";
 import RevenueAnalytics from "../pages/Dashboard/admin/RevenueAnalytics";
 import AssignedProjects from "../pages/Dashboard/decorator/AssignedProjects";
 import ProjectStatus from "../pages/Dashboard/decorator/ProjectStatus";
+import Payment from "../pages/Dashboard/admin/Payment";
+import PaymentSuccess from "../pages/Dashboard/admin/paymentSuccess";
+import PaymentCancelled from "../pages/Dashboard/admin/PaymentCancelled";
 
 
 
@@ -91,6 +94,18 @@ export const router = createBrowserRouter([
       {
         path: 'decorators',
         element: <ManageDecorators></ManageDecorators>,
+      },
+      {
+        path: 'payment/:bookingId',
+        element: <Payment></Payment>,
+      },
+      {
+        path: 'payment-success',
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: 'payment-cancelled',
+        element: <PaymentCancelled></PaymentCancelled>,
       },
       {
         path: 'analytics',

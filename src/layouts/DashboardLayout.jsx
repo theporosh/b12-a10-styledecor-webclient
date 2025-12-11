@@ -25,16 +25,16 @@ return (
     <div className="flex min-h-screen bg-gray-100">
 
       {/* Sidebar */}
-      <DashboardSidebar  />
+     <DashboardSidebar></DashboardSidebar>
 
       {/* Main Content */}
       <div className="flex-1">
         
         {/* Top Navbar */}
-        <DashboardNavbar />
+       <DashboardNavbar></DashboardNavbar>
 
         <div className="p-6">
-          <Outlet />
+         <Outlet></Outlet>
         </div>
 
       </div>

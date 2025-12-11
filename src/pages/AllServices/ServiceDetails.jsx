@@ -69,8 +69,10 @@ const ServiceDetails = () => {
         try {
             const res = await axiosSecure.post("/bookings", bookingData);
             if (res.data.insertedId) {
-                toast.success("Booking Successful!");
+                toast.success("Booking Successful! Please pay now");
+                navigate('/dashboard/bookings')
                 setIsOpen(false);
+                
             }
         } catch (err) {
             console.error(err);
@@ -99,7 +101,7 @@ const ServiceDetails = () => {
                 Book Now
             </button>
 
-            {/* DaisyUI-like Modal */}
+            {/* Modal */}
             {isOpen && (
                 <div className="modal modal-open">
                     <div className="modal-box relative">
