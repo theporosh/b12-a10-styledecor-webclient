@@ -36,7 +36,7 @@ const PaymentHistory = () => {
 
                             <div className="mb-2">
                                 <span className="font-semibold">Amount:</span>{" "}
-                                <span className="text-green-600 font-bold">
+                                <span className="text-[#C8A870] font-bold">
                                     ${payment.amount}
                                 </span>
                             </div>
@@ -67,8 +67,8 @@ const PaymentHistory = () => {
 
                             <div className="mt-3">
                                 <span
-                                    className={`px-3 py-1 text-sm text-white rounded-lg ${payment.paymentStatus === "paid"
-                                            ? "bg-green-600"
+                                    className={`px-3 py-1 text-sm rounded-lg ${payment.paymentStatus === "paid"
+                                            ? "bg-green-200 text-green-700"
                                             : "bg-red-600"
                                         }`}
                                 >
