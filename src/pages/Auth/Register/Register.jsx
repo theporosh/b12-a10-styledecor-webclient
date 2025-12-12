@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Register = () => {
-    // email: tom@jom.com, password: 123456As@
+    
     const { registerUser, signInGoogle, updateUserProfile } = useAuth();
 
     const location = useLocation();
@@ -77,6 +77,7 @@ const Register = () => {
                             .then(() => {
                                 console.log('user profile updated done')
                                 navigate(location.state || '/');
+                                // navigate('/');
                                 toast.success("Registration successful!");
                             })
                             .catch(error => {

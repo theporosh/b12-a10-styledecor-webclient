@@ -48,7 +48,8 @@ const PaymentHistory = () => {
 
                             <div className="mb-1">
                                 <span className="font-semibold">Payment Date:</span>{" "}
-                                {new Date(payment.paidAt).toLocaleDateString()}
+                                {/* {new Date(payment.paidAt).toLocaleDateString()} */}
+                                {payment.paidAt}
                             </div>
 
                             <div className="mb-1">

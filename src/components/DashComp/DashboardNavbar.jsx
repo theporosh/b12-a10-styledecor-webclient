@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { FaBell, FaBars } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
+import { useLocation } from "react-router";
 
 
 const DashboardNavbar = ({ onToggleSidebar }) => {
     const { user, logOut } = useAuth();
 
     const [openDropdown, setOpenDropdown] = useState(false);
+
+    const location = useLocation();
 
     const handleLogout = () => {
         logOut();
@@ -76,6 +79,7 @@ const DashboardNavbar = ({ onToggleSidebar }) => {
                             </button>
 
                             <button
+                                state={location.state}
                                 className="block w-full text-left px-4 py-2 hover:bg-gray-100"
                                 onClick={handleLogout}
                             >
