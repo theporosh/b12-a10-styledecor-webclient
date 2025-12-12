@@ -93,7 +93,7 @@ const MyBookings = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-3xl font-bold mb-6">My Bookings</h2>
+            <h2 className="text-3xl font-bold mb-6">My Bookings: {bookings.length}</h2>
 
             <div className="grid md:grid-cols-2 gap-6">
                 {bookings.map((booking) => (
