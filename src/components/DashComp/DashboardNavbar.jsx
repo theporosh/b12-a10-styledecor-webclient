@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { FaBell, FaBars } from "react-icons/fa";
-import useAuth from "../../hooks/useAuth";
+
 import { useLocation } from "react-router";
+import useRole from "../../hooks/useRole";
+import useAuth from "../../hooks/useAuth";
 
 
 const DashboardNavbar = ({ onToggleSidebar }) => {
     const { user, logOut } = useAuth();
+
+    const { role } = useRole();
 
     const [openDropdown, setOpenDropdown] = useState(false);
 
@@ -60,7 +64,8 @@ const DashboardNavbar = ({ onToggleSidebar }) => {
                                 {user?.displayName || "User"}
                             </p>
                             <span className="text-xs bg-[#1E595D] text-white px-2 rounded">
-                                {user?.role || "User"}
+                                {/* {user?.role || "User"} */}
+                                {role}
                             </span>
                         </div>
                     </button>

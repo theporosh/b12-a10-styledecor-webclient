@@ -23,6 +23,7 @@ import PaymentSuccess from "../pages/Dashboard/admin/paymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/admin/PaymentCancelled";
 import Decorators from "../pages/Decorators/Decorators";
 import ApproveDecorators from "../pages/Dashboard/admin/ApproveDecorators";
+import ManageUsers from "../pages/Dashboard/admin/ManageUsers";
 
 
 
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
       {
         path: 'approve-decorators',
         element: <ApproveDecorators></ApproveDecorators>,
+      },
+      {
+        path: 'manage-users',
+        element: <ManageUsers></ManageUsers>,
       },
       {
         path: 'payment/:bookingId',

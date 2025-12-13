@@ -10,12 +10,15 @@ import {
     FaUsersCog,
     FaHome,
 } from "react-icons/fa";
-import useAuth from "../../hooks/useAuth";
+// import useAuth from "../../hooks/useAuth";
 import { RiUserCommunityFill } from "react-icons/ri";
+import useRole from "../../hooks/useRole";
 
 const DashboardSidebar = () => {  //{ role }
 
-    const { role } = useAuth();
+    // const { role } = useAuth();
+    const { role } = useRole();
+    console.log("ROLE FROM HOOK:", role);
 
     const [isOpen, setIsOpen] = useState(true);
 
@@ -71,7 +74,7 @@ const DashboardSidebar = () => {  //{ role }
                 )}
 
                 {/* ADMIN DASHBOARD */}
-                {role === "user" && (    //"admin"
+                {role === "admin" && (    //"admin"
                     <>
                         <li>
                             <Link className="flex items-center gap-3" to="/dashboard/services">
@@ -91,6 +94,12 @@ const DashboardSidebar = () => {  //{ role }
                                 {isOpen && "Approve Decorators"}
                             </Link>
                         </li>
+                        <li>
+                            <Link className="flex items-center gap-3" to="/dashboard/manage-users">
+                                <FaUser></FaUser>
+                                {isOpen && "Manage Users"}
+                            </Link>
+                        </li>
 
                         <li>
                             <Link className="flex items-center gap-3" to="/dashboard/analytics">
@@ -102,7 +111,7 @@ const DashboardSidebar = () => {  //{ role }
                 )}
 
                 {/* DECORATOR DASHBOARD */}
-                {role === "user" && (   //"decorator"
+                {role === "decorator" && (   //"decorator"
                     <>
                         <li>
                             <Link className="flex items-center gap-3" to="/dashboard/projects">
