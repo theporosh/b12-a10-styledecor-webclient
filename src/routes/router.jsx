@@ -24,6 +24,7 @@ import PaymentCancelled from "../pages/Dashboard/admin/PaymentCancelled";
 import Decorators from "../pages/Decorators/Decorators";
 import ApproveDecorators from "../pages/Dashboard/admin/ApproveDecorators";
 import ManageUsers from "../pages/Dashboard/admin/ManageUsers";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -106,11 +107,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'approve-decorators',
-        element: <ApproveDecorators></ApproveDecorators>,
+        element: <AdminRoute>
+          <ApproveDecorators></ApproveDecorators>
+        </AdminRoute>,
       },
       {
         path: 'manage-users',
-        element: <ManageUsers></ManageUsers>,
+        element: <AdminRoute>
+          <ManageUsers></ManageUsers>
+        </AdminRoute>,
       },
       {
         path: 'payment/:bookingId',
