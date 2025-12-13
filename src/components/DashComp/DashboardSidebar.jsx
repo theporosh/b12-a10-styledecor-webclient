@@ -18,7 +18,7 @@ const DashboardSidebar = () => {  //{ role }
 
     // const { role } = useAuth();
     const { role } = useRole();
-    console.log("ROLE FROM HOOK:", role);
+    // console.log("ROLE FROM HOOK in DashboardSidebar:", role);
 
     const [isOpen, setIsOpen] = useState(true);
 

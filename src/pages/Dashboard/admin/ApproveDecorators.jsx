@@ -46,7 +46,7 @@ const ApproveDecorators = () => {
     return (
         <div className="p-4 max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-[#1E595D] mb-6">
-                <span className="text-[#C8A870]">Decorators</span> Pending Approval
+                <span className="text-[#C8A870]">Decorators</span> Pending Approval ({decorators.length})
             </h2>
 
             <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

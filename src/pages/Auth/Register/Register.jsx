@@ -40,7 +40,7 @@ const Register = () => {
 
         registerUser(data.email, data.password)
             .then((result) => {
-                console.log(result.user);
+                // console.log(result.user);
 
                 // 1. store the image in form data
                 const formData = new FormData()
@@ -102,7 +102,7 @@ const Register = () => {
         // console.log("Google Register Clicked");
         signInGoogle()
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
 
 
                 // create user in the database

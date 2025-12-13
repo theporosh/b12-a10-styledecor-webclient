@@ -25,6 +25,10 @@ import Decorators from "../pages/Decorators/Decorators";
 import ApproveDecorators from "../pages/Dashboard/admin/ApproveDecorators";
 import ManageUsers from "../pages/Dashboard/admin/ManageUsers";
 import AdminRoute from "./AdminRoute";
+import { Component } from "lucide-react";
+import AboutUs from "../pages/Home/AboutUs/AboutUs";
+import Contact from "../pages/Home/Contact/Contact";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 
@@ -58,6 +62,14 @@ export const router = createBrowserRouter([
       {
         path: "/coverage",
         Component: Coverage,
+      },
+      {
+        path: "/about" ,
+        Component: AboutUs ,
+      },
+      {
+        path: "/contact" ,
+        Component: Contact,
       },
     ]
   },
@@ -144,7 +156,11 @@ export const router = createBrowserRouter([
         element: <ProjectStatus></ProjectStatus>,
       },
     ]
-  }
+  },
+   {
+        path: "/*",
+        element: <ErrorPage></ErrorPage>,
+    },
 
 
 ]);

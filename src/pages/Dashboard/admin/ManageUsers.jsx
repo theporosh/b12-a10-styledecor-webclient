@@ -15,9 +15,9 @@ const ManageUsers = () => {
         }
     });
 
-    const handleMakeUser = user => {
+    const handleMakeAdmin = user => {
         const roleInfo = { role: 'admin' };
-        axiosSecure.patch(`/users/${user._id}`, roleInfo)
+        axiosSecure.patch(`/users/${user._id}/role`, roleInfo)
             .then(res => {
                 if (res.data.modifiedCount) {
                     refetch();
@@ -34,7 +34,7 @@ const ManageUsers = () => {
 
     const handleRemoveAdmin = user => {
         const roleInfo = { role: 'user' };
-        axiosSecure.patch(`/users/${user._id}`, roleInfo)
+        axiosSecure.patch(`/users/${user._id}/role`, roleInfo)
             .then(res => {
                 if (res.data.modifiedCount) {
                     refetch();
@@ -108,7 +108,7 @@ const ManageUsers = () => {
                                         </button>
                                     ) : (
                                         <button
-                                            onClick={() => handleMakeUser(user)}
+                                            onClick={() => handleMakeAdmin(user)}
                                             className="flex items-center gap-1 mx-auto px-4 py-2 bg-[#1E595D] text-white rounded-lg hover:bg-[#17484a] transition"
                                         >
                                             <FaUserShield /> Make Admin

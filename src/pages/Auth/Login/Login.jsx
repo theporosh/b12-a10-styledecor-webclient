@@ -12,7 +12,7 @@ const Login = () => {
     const { signInUser, signInGoogle } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
-    console.log('in the login page', location);
+    // console.log('in the login page', location);
 
     const axiosSecure = useAxiosSecure();
     const [showPassword, setShowPassword] = useState(false);
@@ -28,10 +28,10 @@ const Login = () => {
     // };
 
     const handleLogin = (data) => {
-        console.log('form data', data);
+        // console.log('form data', data);
         signInUser(data.email, data.password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 navigate(location?.state || '/')
                 toast.success("Logged in successfully!");
             })
@@ -50,7 +50,7 @@ const Login = () => {
         // Firebase Auth 
         signInGoogle()
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
 
 
                 // create user in the database
@@ -61,7 +61,7 @@ const Login = () => {
                 }
                 axiosSecure.post('/users', userInfo)
                     .then(res => {
-                        console.log('user google data has been stored', res.data);
+                        // console.log('user google data has been stored', res.data);
                         navigate(location.state || '/');
                         toast.success("Google login successful!");
                     })
