@@ -130,6 +130,18 @@ const MyBookings = () => {
                         >
                             {booking.status}
                         </span>
+                        {/* Assign Status Badge */}
+                        <span
+                            className={`mt-3 px-3 py-1 rounded-full text-sm w-fit
+                                ${booking.assignStatus === "pending-assign" && "bg-yellow-200 text-yellow-700"}
+                                ${booking.assignStatus === "assigned" && "bg-green-200 text-green-700"}
+                                ${booking.assignStatus === "Cancelled" && "bg-red-200 text-red-700"}
+                            `}
+                        >
+                         AssignStatus: {booking.assignStatus}
+                        </span>
+                        
+                        <span className="text-green-700 mt-3">Tracking Id: {booking.trackingId}</span>
 
                         {/* Action Buttons */}
                         <div className="mt-4 flex justify-between">

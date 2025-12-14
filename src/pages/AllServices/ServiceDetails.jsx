@@ -64,6 +64,7 @@ const ServiceDetails = () => {
             bookingDate,
             locations,
             status: "Pending",
+            
         };
 
         try {

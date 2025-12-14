@@ -55,7 +55,7 @@ const ApproveDecorators = () => {
                         key={decorator._id}
                         className="bg-white shadow-lg hover:shadow-xl transition rounded-xl p-5 flex flex-col items-center relative"
                     >
-                        {/* Status Badge */}
+                        {/*Application Status Badge */}
                         <span
                             className={`absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full 
                                 ${decorator.status === 'pending' && 'bg-yellow-200 text-yellow-700'}
@@ -64,6 +64,17 @@ const ApproveDecorators = () => {
                             `}
                         >
                             {decorator.status.toUpperCase()}
+                        </span>
+
+                        {/*Working Status Badge */}
+                        <span
+                            className={`absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full 
+                                ${decorator.workStatus === 'busy' && 'bg-yellow-200 text-yellow-700'}
+                                ${decorator.workStatus === 'available' && 'bg-green-200 text-green-700'}
+                                ${decorator.workStatus === 'not-available' && 'bg-red-200 text-red-700'}
+                            `}
+                        >
+                            {decorator.workStatus}
                         </span>
 
                         <img

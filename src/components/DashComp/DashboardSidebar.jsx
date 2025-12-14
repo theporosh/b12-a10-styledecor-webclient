@@ -11,7 +11,7 @@ import {
     FaHome,
 } from "react-icons/fa";
 // import useAuth from "../../hooks/useAuth";
-import { RiUserCommunityFill } from "react-icons/ri";
+import { RiEBikeFill, RiUserCommunityFill } from "react-icons/ri";
 import useRole from "../../hooks/useRole";
 
 const DashboardSidebar = () => {  //{ role }
@@ -92,6 +92,12 @@ const DashboardSidebar = () => {  //{ role }
                             <Link className="flex items-center gap-3" to="/dashboard/approve-decorators">
                                 <RiUserCommunityFill />
                                 {isOpen && "Approve Decorators"}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="flex items-center gap-3" to="/dashboard/assign-decorators">
+                                <RiEBikeFill />
+                                {isOpen && "Assign Decorators"}
                             </Link>
                         </li>
                         <li>

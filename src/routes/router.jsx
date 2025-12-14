@@ -10,7 +10,6 @@ import AllServices from "../pages/AllServices/AllServices";
 import ServiceDetails from "../pages/AllServices/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
-import UserProfile from "../pages/Dashboard/user/UserProfile";
 import MyBookings from "../pages/Dashboard/user/MyBookings";
 import PaymentHistory from "../pages/Dashboard/user/PaymentHistory";
 import ManageServices from "../pages/Dashboard/admin/ManageServices";
@@ -29,6 +28,8 @@ import { Component } from "lucide-react";
 import AboutUs from "../pages/Home/AboutUs/AboutUs";
 import Contact from "../pages/Home/Contact/Contact";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import UserProfile from "../pages/Dashboard/user/UserProfile";
+import AssignDecorators from "../pages/Dashboard/admin/AssignDecorators";
 
 
 
@@ -121,6 +122,12 @@ export const router = createBrowserRouter([
         path: 'approve-decorators',
         element: <AdminRoute>
           <ApproveDecorators></ApproveDecorators>
+        </AdminRoute>,
+      },
+      {
+        path: 'assign-decorators',
+        element: <AdminRoute>
+          <AssignDecorators></AssignDecorators>
         </AdminRoute>,
       },
       {
