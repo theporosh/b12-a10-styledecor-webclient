@@ -71,7 +71,7 @@ const ApproveDecorators = () => {
                             className={`absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full 
                                 ${decorator.workStatus === 'busy' && 'bg-yellow-200 text-yellow-700'}
                                 ${decorator.workStatus === 'available' && 'bg-green-200 text-green-700'}
-                                ${decorator.workStatus === 'not-available' && 'bg-red-200 text-red-700'}
+                                ${decorator.workStatus === 'unAvailable' && 'bg-red-200 text-red-700'}
                             `}
                         >
                             {decorator.workStatus}

@@ -30,6 +30,7 @@ import Contact from "../pages/Home/Contact/Contact";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import UserProfile from "../pages/Dashboard/user/UserProfile";
 import AssignDecorators from "../pages/Dashboard/admin/AssignDecorators";
+import DecoratorRoute from "./DecoratorRoute";
 
 
 
@@ -156,7 +157,9 @@ export const router = createBrowserRouter([
       // Decorator
       {
         path: 'projects',
-        element: <AssignedProjects></AssignedProjects>,
+        element: <DecoratorRoute>
+          <AssignedProjects></AssignedProjects>
+        </DecoratorRoute>,
       },
       {
         path: 'status',
