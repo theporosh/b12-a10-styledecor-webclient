@@ -16,7 +16,7 @@ import ManageServices from "../pages/Dashboard/admin/ManageServices";
 import ManageDecorators from "../pages/Dashboard/admin/ManageDecorators";
 import RevenueAnalytics from "../pages/Dashboard/admin/RevenueAnalytics";
 import AssignedProjects from "../pages/Dashboard/decorator/AssignedProjects";
-import ProjectStatus from "../pages/Dashboard/decorator/ProjectStatus";
+import CompletedProjectStatus from "../pages/Dashboard/decorator/CompletedProjectStatus";
 import Payment from "../pages/Dashboard/admin/Payment";
 import PaymentSuccess from "../pages/Dashboard/admin/paymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/admin/PaymentCancelled";
@@ -162,8 +162,10 @@ export const router = createBrowserRouter([
         </DecoratorRoute>,
       },
       {
-        path: 'status',
-        element: <ProjectStatus></ProjectStatus>,
+        path: 'completed-project',
+        element: <DecoratorRoute>
+          <CompletedProjectStatus></CompletedProjectStatus>
+        </DecoratorRoute>,
       },
     ]
   },

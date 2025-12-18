@@ -126,9 +126,9 @@ const DashboardSidebar = () => {  //{ role }
                             </Link>
                         </li>
                         <li>
-                            <Link className="flex items-center gap-3" to="/dashboard/status">
+                            <Link className="flex items-center gap-3" to="/dashboard/completed-project">
                                 <FaTools />
-                                {isOpen && "Update Status"}
+                                {isOpen && "Completed Project Status"}
                             </Link>
                         </li>
                     </>
